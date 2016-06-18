@@ -1,0 +1,72 @@
+<!-- Ventas -->
+<div class="row">
+  <div class="col s12 l6">
+    <h4>Ventas</h4>
+    <div id="ventas">
+      <table>
+        <thead>
+          <tr>
+            <th class="left-align" data-field="Nombre">Nombre</th>
+            <th class="right-align" data-field="Cantidad">Cantidad</th>
+            <th class="right-align" data-field="Precio">Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items">
+            <td class="left-align">
+              <a href="#/producto/{{item._id}}/detalle">{{item.nombre}}</a>
+            </td>
+            <td class="right-align" ng-click="incrementarCantidad($index)">{{item.cantidad}}</td>
+            <td class="right-align">${{item.cantidad * item.precio | number: 2}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col s12 l6">
+        <label for="buscarCliente">Cliente</label>
+        <input type="text" id="buscarCliente" placeholder="Buscar Cliente">
+      </div>
+      <div class="col s12 l6">
+        <table>
+          <tr>
+            <th>Subtotal</th>
+            <th>${{subTotal | number: 2}}</th>
+          </tr>
+          <tr>
+            <th>Impuestos</th>
+            <th>${{impuestos | number: 2}}</th>
+          </tr>
+          <tr>
+            <th>Total</th>
+            <th>${{total | number: 2}}</th>
+          </tr>
+          <tr>
+            <th>A pagar</th>
+            <th>${{aPagar | number: 2}}</th>
+          </tr>
+        </table>
+      </div>
+      <div class="row">
+        <button class="btn grey lighten-1 col s12 l2">Anular</button>
+        <button class="btn grey lighten-1 col s12 l2">Parkear</button>
+        <button class="btn grey lighten-1 col s12 l2">Notas</button>
+        <button class="btn grey lighten-1 col s12 l2">Descuento</button>
+        <button class="btn blue col s12 l4">Pagar</button>
+      </div>
+    </div>
+  </div>
+  <!-- Listado de productos -->
+  <div class="col s12 l6">
+    <h4>Productos</h4>
+    <label for="buscarProducto">Buscar</label>
+    <input id="buscarProducto" name="buscarProducto" type="text" placeholder="Buscar producto" ng-model="busqueda">
+    <ul id="producto" class="collection">
+      <li class="collection-item" ng-repeat="producto in productos | filter: busqueda">
+        <span ng-click=agregarProducto($index)>
+              {{producto.nombre}}
+             </span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+ul#producto {
+  height: 440px;
+  overflow-y: scroll;
+}
+#ventas {
+  height: 300px;
+  overflow-y: scroll;
+}

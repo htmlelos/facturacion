@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col s12 l6">
+    <div class="card grey lighten-1">
+      <div class="card-content white-text">
+        <span class="card-title">Detalle Producto</span>
+        <table>
+          <tr>
+            <td>
+              <label for="nombre">Nombre</label>
+            </td>
+            <td><span id="nombre" name="nombre">{{producto.nombre}}</span></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="nombre">Categoria</label>
+            </td>
+            <td><span id="nombre" name="nombre">{{producto.categoria}}</span></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="nombre">Precio</label>
+            </td>
+            <td class="right-align"><span id="nombre" name="nombre">${{producto.precio | number: 2}}</span></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="nombre">Stock</label>
+            </td>
+            <td class="right-align"><span id="nombre" name="nombre">{{producto.stock}}</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
