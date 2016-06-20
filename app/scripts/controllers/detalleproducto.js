@@ -14,7 +14,8 @@ angular.module('facturasApp')
 
     promise.then(
       function (payload) {
-        $scope.producto = payload.data;
+        console.log('PRODUCTO: %O', payload.data.product);
+        $scope.producto = payload.data.product;
       },
       function (errorPayload) {
         $log.error('Fallo cargando los productos', errorPayload);

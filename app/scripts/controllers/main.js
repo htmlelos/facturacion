@@ -14,7 +14,8 @@ angular.module('facturasApp')
 
     promise.then(
       function (payload) {
-        $scope.productos = payload.data;
+        /*console.log('PRODUCTOS: %O', payload.data.products);*/
+        $scope.productos = payload.data.products;
       },
       function (errorPayload) {
         $log.error('Fallo cargando producto', errorPayload);
@@ -34,13 +35,13 @@ angular.module('facturasApp')
 
       /*jslint nomen: true*/
       var item = {
-          _id: $scope.productos.products[id]._id,
-          nombre: $scope.productos.products[id].nombre,
+          _id: $scope.productos[id]._id,
+          nombre: $scope.productos[id].nombre,
           cantidad: 1,
-          precio: $scope.productos.products[id].precio
+          precio: $scope.productos[id].precio
         },
         exists = $scope.items.filter(function (item) {
-          return item._id === $scope.productos.products[id]._id;
+          return item._id === $scope.productos[id]._id;
         });
       /*jslint nomen: true*/
       if (exists.length === 0) {
