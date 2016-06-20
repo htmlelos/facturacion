@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc function
  * @name facturasApp.controller:MainCtrl
@@ -7,11 +5,21 @@
  * # MainCtrl
  * Controller of the facturasApp
  */
+/*global angular*/
 angular.module('facturasApp')
-  .controller('MainCtrl', function ($scope, ServicioProducto) {
-    ServicioProducto.listadoProductos(function (productos) {
-      $scope.productos = productos.products;
-    });
+  .controller('MainCtrl', function ($scope, $log, ServicioProducto) {
+    'use strict';
+
+    var promise = ServicioProducto.listadoProductos();
+
+    promise.then(
+      function (payload) {
+        $scope.productos = payload.data;
+      },
+      function (errorPayload) {
+        $log.error('Fallo cargando producto', errorPayload);
+      }
+    );
 
     $scope.items = [];
 
@@ -24,17 +32,17 @@ angular.module('facturasApp')
 
     $scope.agregarProducto = function (id) {
 
+      /*jslint nomen: true*/
       var item = {
-        _id: $scope.productos[id]._id,
-        nombre: $scope.productos[id].nombre,
-        cantidad: 1,
-        precio: $scope.productos[id].precio
-      };
-
-      var exists = $scope.items.filter(function (item) {
-        return item._id === $scope.productos[id]._id;
-      });
-
+          _id: $scope.productos.products[id]._id,
+          nombre: $scope.productos.products[id].nombre,
+          cantidad: 1,
+          precio: $scope.productos.products[id].precio
+        },
+        exists = $scope.items.filter(function (item) {
+          return item._id === $scope.productos.products[id]._id;
+        });
+      /*jslint nomen: true*/
       if (exists.length === 0) {
         $scope.items.push(item);
         $scope.calcularTotal();

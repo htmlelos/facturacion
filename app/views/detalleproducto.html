@@ -8,25 +8,25 @@
             <td>
               <label for="nombre">Nombre</label>
             </td>
-            <td><span id="nombre" name="nombre">{{producto.nombre}}</span></td>
+            <td><span id="nombre" name="nombre">{{producto.product[0].nombre}}</span></td>
           </tr>
           <tr>
             <td>
               <label for="nombre">Categoria</label>
             </td>
-            <td><span id="nombre" name="nombre">{{producto.categoria}}</span></td>
+            <td><span id="nombre" name="nombre">{{producto.product[0].categoria}}</span></td>
           </tr>
           <tr>
             <td>
               <label for="nombre">Precio</label>
             </td>
-            <td class="right-align"><span id="nombre" name="nombre">${{producto.precio | number: 2}}</span></td>
+            <td class="right-align"><span id="nombre" name="nombre">${{producto.product[0].precio | number: 2}}</span></td>
           </tr>
           <tr>
             <td>
               <label for="nombre">Stock</label>
             </td>
-            <td class="right-align"><span id="nombre" name="nombre">{{producto.stock}}</span></td>
+            <td class="right-align"><span id="nombre" name="nombre">{{producto.product[0].stock}}</span></td>
           </tr>
         </table>
       </div>

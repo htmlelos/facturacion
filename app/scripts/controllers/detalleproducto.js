@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc function
  * @name facturasApp.controller:DetalleproductoCtrl
@@ -7,14 +5,19 @@
  * # DetalleproductoCtrl
  * Controller of the facturasApp
  */
+/*global angular*/
 angular.module('facturasApp')
-  .controller('DetalleproductoCtrl', function ($scope, $routeParams, ServicioProducto) {
-    ServicioProducto.listadoProductos(function(productos) {
-      $scope.productos = productos;
-    });
+  .controller('DetalleproductoCtrl', function ($scope, $routeParams, $log, ServicioProducto) {
+    'use strict';
 
-    ServicioProducto.detalleProducto($routeParams.id, function(producto){
-      console.log('Producto %O', producto.product[0]);
-      $scope.producto = producto.product[0];
-    });
+    var promise = ServicioProducto.detalleProducto($routeParams.id);
+
+    promise.then(
+      function (payload) {
+        $scope.producto = payload.data;
+      },
+      function (errorPayload) {
+        $log.error('Fallo cargando los productos', errorPayload);
+      }
+    );
   });

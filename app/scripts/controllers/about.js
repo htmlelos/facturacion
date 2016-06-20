@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc function
  * @name facturasApp.controller:AboutCtrl
@@ -7,7 +5,9 @@
  * # AboutCtrl
  * Controller of the facturasApp
  */
+/*global angular*/
 angular.module('facturasApp')
   .controller('AboutCtrl', function () {
+    'use strict';
 
   });

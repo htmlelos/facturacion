@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc overview
  * @name facturasApp
@@ -8,6 +6,7 @@
  *
  * Main module of the application.
  */
+/*global angular*/
 angular
   .module('facturasApp', [
     'ngAnimate',
@@ -20,6 +19,7 @@ angular
     'ngTouch'
   ])
   .config(function ($routeProvider) {
+    'use strict';
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

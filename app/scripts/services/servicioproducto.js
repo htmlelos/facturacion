@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @ngdoc service
  * @name facturasApp.ServicioProducto
@@ -7,24 +5,17 @@
  * # ServicioProducto
  * Factory in the facturasApp.
  */
+/*global angular*/
 angular.module('facturasApp')
   .factory('ServicioProducto', function ($http) {
-    // Service logic
-    // ...
+    'use strict';
 
     var listadoProductos = function (callback) {
-      $http.get('http://localhost:3000/api/productos', {})
-        .success(function (data) {
-          callback(data);
-        });
-    };
-
-    var detalleProducto = function (id, callback) {
-      $http.get('http://localhost:3000/api/producto/' + id, {})
-        .success(function (data) {
-          callback(data);
-        });
-    };
+        return $http.get('http://localhost:3000/api/productos', {});
+      },
+      detalleProducto = function (id, callback) {
+        return $http.get('http://localhost:3000/api/producto/' + id, {});
+      };
 
     return {
       listadoProductos: listadoProductos,

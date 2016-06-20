@@ -62,7 +62,7 @@
     <label for="buscarProducto">Buscar</label>
     <input id="buscarProducto" name="buscarProducto" type="text" placeholder="Buscar producto" ng-model="busqueda">
     <ul id="producto" class="collection">
-      <li class="collection-item" ng-repeat="producto in productos | filter: busqueda">
+      <li class="collection-item" ng-repeat="producto in productos.products | filter: busqueda">
         <span ng-click=agregarProducto($index)>
               {{producto.nombre}}
              </span>
